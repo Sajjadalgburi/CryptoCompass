@@ -35,6 +35,7 @@ const typeDefs = gql`
 
   type Mutation {
     SaveCrypto(cryptoInput: cryptoInput!): User
+    createUser(username: String!, email: String!, password: String!): Auth
   }
 `;
 
