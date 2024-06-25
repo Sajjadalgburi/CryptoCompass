@@ -1,5 +1,3 @@
-// this file will contain the typeDefinitons for the GraphQL API
-
 const gql = require('graphql-tag');
 
 const typeDefs = gql`
@@ -11,30 +9,33 @@ const typeDefs = gql`
     favourCryptos: [FavourCrypto]
   }
 
+  ### Defined the FavourCrypto type
   type FavourCrypto {
     _id: ID
     name: String!
     image: String!
   }
 
-  input cryptoInput {
+  ### Input type for crypto data
+  input CryptoInput {
     name: String!
     image: String!
   }
 
-  ## Defined the Auth type to validate the user
+  ### Defined the Auth type to validate the user
   type Auth {
     token: ID!
     user: User
   }
 
-  ## defineing the nescessary queries to be made
+  ### Defined necessary queries
   type Query {
     me: User
   }
 
+  ### Defined necessary mutations
   type Mutation {
-    SaveCrypto(cryptoInput: cryptoInput!): User
+    saveCrypto(cryptoInput: CryptoInput!): User
     createUser(username: String!, email: String!, password: String!): Auth
     login(username: String!, password: String!): Auth
   }
