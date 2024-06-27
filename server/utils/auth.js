@@ -8,11 +8,6 @@ const secret = process.env.SESS_SECRET;
 const expiration = '336h'; // 2 weeks or 14 days until expiration
 
 module.exports = {
-  AuthenticationError: new GraphQLError('Could not authenticate user.', {
-    extensions: {
-      code: 'UNAUTHENTICATED',
-    },
-  }),
   authMiddleware: function ({ req }) {
     // allows token to be sent via req.body, req.query, or headers
     let token = req.body.token || req.query.token || req.headers.authorization;
@@ -37,8 +32,8 @@ module.exports = {
     // return the request object so it can be passed to the resolver as `context`
     return req;
   },
-  signToken: function ({ password, username, _id }) {
-    const payload = { password, username, _id };
+  signToken: function ({ email, username, _id }) {
+    const payload = { email, username, _id };
     return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
   },
 };
