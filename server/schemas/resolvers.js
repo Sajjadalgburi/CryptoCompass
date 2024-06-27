@@ -19,6 +19,7 @@ const resolvers = {
         throw new Error('Cannot find the user with this id!');
       } catch (err) {
         console.error(err);
+        throw new Error('Cannot find the user!');
       }
     },
   },
@@ -62,6 +63,29 @@ const resolvers = {
       } catch (err) {
         console.error(err);
         throw new Error('failed to login!');
+      }
+    },
+    saveCrypto: async (parent, { name, image }, context) => {
+      try {
+        // checking wether the user is signed in
+        if (!context.user)
+          throw new Error('user must be signed in to save a crypto');
+
+        // mongoose function to find the user that is signed in
+        //  and add the crypto they want to save into their user schema
+        const updateUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { favourCrypto: { name, password } } },
+          { new: true, runValidators: true },
+        );
+
+        // if the process fails then will throw an error
+        if (!updateUser) throw new Error('cannot save the crypto');
+
+        return updateUser;
+      } catch (err) {
+        console.error(err);
+        throw new Error('Error with saving the crypto');
       }
     },
   },
