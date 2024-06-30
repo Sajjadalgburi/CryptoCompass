@@ -1,6 +1,5 @@
 // this file will include the logic for the authentication middleware function and the signToken function that we'll use to sign our tokens.
 require('dotenv').config();
-const { GraphQLError } = require('graphql');
 const jwt = require('jsonwebtoken');
 
 // server secret and expiration time for token
