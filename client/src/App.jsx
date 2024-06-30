@@ -1,5 +1,6 @@
 // Importing components
 import HomePage from './page/HomePage';
+import Navigation from './components/Navigation';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -38,6 +39,7 @@ const client = new ApolloClient({
 export default function App() {
   return (
     <ApolloProvider client={client}>
+      <Navigation />
       <HomePage />
     </ApolloProvider>
   );
