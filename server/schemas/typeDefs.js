@@ -27,18 +27,17 @@ const typeDefs = gql`
     token: ID!
     user: User
   }
-
   type Crypto {
     name: String!
     color: String!
-    rank: Number!
+    rank: Int!
     age: String!
     image: String!
     allTimeHigh: Float!
     link: String!
-    currentPrice: Number!
-    volume: Number!
-    marketCap: Number!
+    currentPrice: Float!
+    volume: Float!
+    marketCap: Float!
     changeInHour: Float!
     changeInDay: Float!
     changeInWeek: Float!
