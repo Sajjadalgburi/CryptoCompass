@@ -66,10 +66,6 @@ const resolvers = {
           changeInYear: crypto.delta.year, // rate of change in the last year
         }));
 
-        console.log('====================================');
-        console.log(cryptoData);
-        console.log('====================================');
-
         return cryptoData;
       } catch (error) {
         // Handle error
