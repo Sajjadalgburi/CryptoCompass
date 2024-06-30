@@ -28,9 +28,28 @@ const typeDefs = gql`
     user: User
   }
 
+  type Crypto {
+    name: String!
+    color: String!
+    rank: Number!
+    age: String!
+    image: String!
+    allTimeHigh: Float!
+    link: String!
+    currentPrice: Number!
+    volume: Number!
+    marketCap: Number!
+    changeInHour: Float!
+    changeInDay: Float!
+    changeInWeek: Float!
+    changeInQuarter: Float!
+    changeInYear: Float!
+  }
+
   ### Defined necessary queries
   type Query {
     me: User
+    cryptoData: [Crypto]
   }
 
   ### Defined necessary mutations
